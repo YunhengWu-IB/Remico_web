@@ -1,0 +1,257 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1B3C53;
+    color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+/* header 区域 */
+header {
+    height: 60px;  /* 固定高度 */
+    display: flex;
+    justify-content: center;      /* h1 居中 */
+    align-items: center;
+    background-color: #8aaac4;
+    padding: 10px 20px;
+    position: relative;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #000000;
+}
+
+/* 右上角 logo */
+.logo-group {
+    position: absolute;
+    right: 20px;   /* 靠右 */
+    top: 10px;     /* 靠上 */
+    display: flex;
+    gap: 20px;     /* logo 间距 */
+}
+
+.logo-group img {
+    width: 150px;
+    height: 60px;
+    object-fit: contain;   /* 保持比例完整显示 */
+    object-position: center;
+}
+
+
+
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px;
+}
+
+h2 {
+    color: #E67E22;
+    border-bottom: 1px solid #CA6F1E;
+    padding-bottom: 5px;
+}
+
+p, li, pre {
+    text-align: justify;   /* 两端对齐 */
+    text-justify: inter-word; /* 让单词之间调整间距 */
+    color: #cccccc;
+    line-height: 1.6;
+}
+
+a {
+    color: #f2f2f2;      /* 改成你想要的字体颜色，比如浅灰或橙色 */
+    text-decoration: none; /* 去掉下划线 */
+}
+
+a:hover {
+    color: #E67E22;       /* 鼠标悬停时变橙色（可选） */
+}
+
+
+.button {
+    display: inline-block;
+    padding: 12px 24px;
+    margin-top: 15px;
+    background-color: #E67E22;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #CA6F1E;
+}
+
+
+
+.code-block {
+    position: relative;
+    background-color: #2d3e50;
+    border-radius: 6px;
+    padding: 15px;
+    margin-top: 10px;
+    color: #f2f2f2;
+    font-family: Consolas, monospace;
+}
+
+.code-block pre {
+    margin: 0;
+    white-space: pre-wrap; /* 自动换行 */
+    word-break: break-word;
+    font-size: 14px;
+}
+
+/* 复制按钮 */
+.copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #E67E22;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.copy-btn:hover {
+    background-color: #CA6F1E;
+}
+
+
+.link-btn {
+    color: #E67E22;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.link-btn:hover {
+    color: #CA6F1E;
+    text-decoration: underline;
+}
+
+
+
+/* 表格样式 */
+table {
+    border-collapse: collapse;  /* 合并边框 */
+    width: 80%;
+    margin: 20px auto;  /* 居中 */
+    background-color: #1B3C53; /* 表格背景 */
+    color: white; /* 表格内文字颜色 */
+}
+
+/* 表头和单元格 */
+th, td {
+    border: 1px solid black;
+    padding: 6px 10px;
+    text-align: center;
+}
+
+/* 表头特殊颜色 */
+th {
+    background-color: #1B3C53;
+    font-weight: bold;
+}
+
+/* 表格标题 */
+caption {
+    caption-side: top;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: white; /* 保持白色标题字 */
+}
+
+
+
+
+
+
+body footer {
+    background-color: #8aaac4;
+    text-align: center;
+    padding: 5px;
+    font-size: 14px;
+    color: black;
+}
+footer p {
+    background-color: #8aaac4;
+    text-align: center;
+    padding: 5px;
+    font-size: 14px;
+    color: black;
+}
+
+
+.code-block pre {
+    margin: 0;
+    font-size: 14px;
+    text-align: left;      /* 内容左对齐 */
+    overflow-x: auto;       /* 仍然可以横向滚动 */
+    white-space: pre;
+}
+
+form label {
+    display: inline-block;
+    width: 180px;       /* 标签宽度统一对齐，可按需要调整 */
+    margin-bottom: 15px;
+}
+
+form select {
+    margin-bottom: 15px; /* 控制行间距 */
+    padding: 6px;        /* 输入框内部留白 */
+    border: 1px solid white;
+}
+
+.news {
+    margin-top: 10px;
+}
+.news-item {
+    margin-bottom: 15px;
+}
+.news-item .date {
+    font-weight: bold;
+    color: #E67E22; /* 橙色日期 */
+    margin-right: 10px;
+}
+
+
+.image-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  .image-grid .row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .image-grid img {
+    width: 430px;   /* 根据网页宽度可调整 */
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+  
+  .image-grid figcaption {
+    font-size: 0.9em;
+    color: #c0bcbc;
+    margin-top: 6px;
+  }
+  
+  .image-grid .main-caption {
+    font-weight: 600;
+    margin-top: 12px;
+    font-size: 1em;
+  }
+  
