@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ReMiCo Dataset Download</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the ReMiCo Dataset Download Website</h1>
+        <div class="logo-group">
+            <img src="{{ url_for('static', filename='NU.svg') }}" alt="Nagoya Logo">
+            <img src="{{ url_for('static', filename='IST.png') }}" alt="Tokyo Logo">
+        </div>
+    </header>
+</body>
+
+    <main class="container">
+        <!-- Dataset Introduction -->
+        <section>
+            <h2>1. ReMiCo Introduction</h2>
+            <p>
+                The <b>ReMiCo</b> (<b>Re</b>al-world Dual Magnification <b>Mi</b>croscopic Image of mouse cerebral <b>Co</b>rtex vasculature) Dataset is a dual-magnification microscopic image database 
+                of mouse cerebral cortex vasculature for the study of blood vessel segmentation and analysis. 
+                The image data were collected at the <b>Takebe Laboratory, Institute of Science Tokyo</b>, 
+                and the dataset was organized and developed by the <b>Mori Laboratory, Nagoya University</b>. 
+                It was acquired <i>in vivo</i> using a Leica S9D dissecting microscope equipped with a single-lens camera system. 
+                The dataset contains <b>210 paired low-magnification (LM, 1&times)</b> and <b>high-magnification (HM, 5&times)</b> images, 
+                each with a resolution of <b>896 &times 896 pixels</b>.
+            </p>
+            <p>
+                During imaging, a about 5-7 mm-diameter cranial window was created on the mouse skull 
+                to provide a stable optical access to cortical blood vessels. 
+                Imaging was conducted approximately one week after surgery, following the reduction of inflammation, 
+                under well-controlled illumination and focus conditions to ensure consistency across samples. 
+                The field of view of each HM image is fully contained within the corresponding LM image, 
+                and one LM image may correspond to multiple HM regions.
+            </p>
+            <p>
+                To avoid data leakage, training and testing sets must be split by mouse case (since multiple images may come from different brain regions of the same mouse). If you would like to re-split the training and testing sets, 
+                please refer to the detailed mouse case and image correspondence table:  
+                <a class="link-btn" href="{{ url_for('mouse_table') }}">View Table</a>
+                
+            </p>
+            <p>
+                The dataset is divided into training, validation and test sets as follows:
+                <ul>
+                    <li><b>Training set:</b> 124 paired LM–HM images (No. 001–123)</li>
+                    <li><b>Validation set:</b> 21 paired LM–HM images (No. 124–144)</li>
+                    <li><b>Test set:</b> 65 paired LM–HM images (No. 145–210)</li>
+                </ul>
+            </p>
+            <p>
+                All animal experiments, breeding, maintenance, surgical procedures, 
+                and intravital microscopy were performed in accordance with the ethical guidelines 
+                approved by the <b>Institutional Animal Care and Use Committee of the Institute of Science Tokyo</b>.
+            </p>
+        
+
+        <!-- 2×2 figure grid -->
+<figure class="image-grid">
+    <div class="row">
+      <div class="col">
+        <img src="{{ url_for('static', filename='060_LM_image.png') }}" alt="LM image example">
+        <figcaption>(a) Low-magnification (LM) image</figcaption>
+      </div>
+      <div class="col">
+        <img src="{{ url_for('static', filename='060_HM_image.png') }}" alt="HM image example">
+        <figcaption>(b) High-magnification (HM) image</figcaption>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <img src="{{ url_for('static', filename='060_LM_label.png') }}" alt="Ground Truth of LM image">
+        <figcaption>(c) Ground Truth of LM image</figcaption>
+      </div>
+      <div class="col">
+        <img src="{{ url_for('static', filename='060_HM_label.png') }}" alt="Ground Truth of HM image">
+        <figcaption>(d) Ground Truth of HM image</figcaption>
+      </div>
+    </div>
+    <figcaption class="main-caption">
+      Figure 1. Examples of LM–HM paired images and corresponding Ground Truth in the ReMiCo dataset.
+    </figcaption>
+  </figure>    
+        </section>
+        
+
+
+        <!-- Dataset Structure -->
+        <section>
+            <h2>2. Dataset Structure</h2>
+            <div class="code-block">
+<pre>
+    Remico/
+    ├── LM/
+    │   ├── train/
+    │   │   ├── images/
+    │   │   │   ├── 001_LM_image.png
+    │   │   │   ├── 002_LM_image.png
+    │   │   │   └── ...
+    │   │   └── labels/
+    │   │       ├── 001_LM_label.png
+    │   │       ├── 002_LM_label.png
+    │   │       └── ...
+    │   ├── val/
+    │   │   ├── images/
+    │   │   │   ├── 125_LM_image.png
+    │   │   │   └── ...
+    │   │   └── labels/
+    │   │       ├── 125_LM_label.png
+    │   │       └── ...
+    │   └── test/
+    │       ├── images/
+    │       │   ├── 146_LM_image.png
+    │       │   └── ...
+    │       └── labels/
+    │           ├── 146_LM_label.png
+    │           └── ...
+    └── HM/
+        ├── train/
+        │   ├── images/
+        │   │   ├── 001_HM_image.png
+        │   │   ├── 002_HM_image.png
+        │   │   └── ...
+        │   └── labels/
+        │       ├── 001_HM_label.png
+        │       ├── 002_HM_label.png
+        │       └── ...
+        ├── val/
+        │   ├── images/
+        │   │   ├── 125_HM_image.png
+        │   │   └── ...
+        │   └── labels/
+        │       ├── 125_HM_label.png
+        │       └── ...
+        └── test/
+            ├── images/
+            │   ├── 146_HM_image.png
+            │   └── ...
+            └── labels/
+                ├── 146_HM_label.png
+                └── ...
+    </pre>
+</div>
+        </section>
+
+        <!-- Download Steps -->
+        <section>
+            <h2>3. Download Steps</h2>
+            <ol>
+                <li>Click the download button below</li>
+                <li>Fill in the registration form with your information</li>
+                <li>Confirm and access the download link</li>
+            </ol>
+            <a class="button" href="{{ url_for('form') }}">Dataset Download</a>
+        </section>
+
+        <!-- News & Updates -->
+<section>
+    <h2>4. News & Updates</h2>
+    <div class="news">
+        <div class="news-item">
+            <span class="date">2025-10-02</span>
+            <p>Initial release of the ReMiCo dataset website.</p>
+        </div>
+    </div>
+</section>
+
+
+        
+
+        <!-- Citation -->
+        <section>
+            <h2 id="agreement">5. Citation</h2>
+            <p>If you use the ReMiCo dataset in your research, please cite the following papers.  
+                By downloading and using the ReMiCo dataset, you agree to properly acknowledge and cite this dataset 
+                in any publication, presentation, or derivative work based on research in which it has been used.
+                </p>
+        
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCitation()">Copy</button>
+                <pre id="citation">
+@article{remico2025,
+    title={ReMiCo: Dataset, Benchmark and Method for Blood Vessel Segmentation in Real-World Dual Magnification Dissecting Microscopic Image},
+    author={Wu, Yunheng and Mori, Kensaku and others},
+    journal={Proceedings of },
+    year={2025}
+}
+
+@inproceedings{wu2022blood,
+    title={Blood vessel segmentation from low-contrast and wide-field optical microscopic images of cranial window by attention-gate-based network},
+    author={Wu, Yunheng and Oda, Masahiro and Hayashi, Yuichiro and Takebe, Takanori and Nagata, Shogo and Wang, Cheng and Mori, Kensaku},
+    booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+    pages={1864--1873},
+    year={2022}
+  }
+        </pre>
+            </div>
+        </section>
+        
+        <script>
+        function copyCitation() {
+            const code = document.getElementById("citation").innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                alert("Citation copied to clipboard!");
+            }).catch(err => {
+                alert("Failed to copy text: " + err);
+            });
+        }
+        </script>
+
+<section>
+    <h2>6. Copyright</h2>
+    <p>
+        All intellectual property rights, including copyrights, related to the information contained in this dataset 
+        are held by the <b>Takebe Laboratory, Institute of Science Tokyo</b> and the 
+        <b>Mori Laboratory, Graduate School of Informatics, Nagoya University</b>.
+    </p>
+
+  </section>
+
+<section>
+    <h2>7. License</h2>
+    <p>
+        The ReMiCo dataset is provided under a <b>Research-Only License Agreement</b>.  
+        Access to the dataset is granted solely for academic and non-commercial research or educational purposes.  
+        Redistribution, commercial use, or sharing with third parties is strictly prohibited.  
+        Users must agree to the license terms upon registration before downloading.
+      </p>
+    
+      <p>
+        This dataset is available <b>only for non-commercial use</b> in research or educational activities.  
+        As long as the dataset is used for these purposes, users are permitted to edit, process, or analyze 
+        the images and annotations contained within the dataset.  
+        However, <b>any form of commercial use is prohibited</b> without explicit written permission 
+        from the Mori Laboratory.  
+        This restriction applies even after copying, editing, processing, or any other modification of the data.  
+        Please contact us for inquiries regarding commercial use or if you are uncertain about specific use cases.
+      </p>
+    <p>
+      For special permissions or collaboration requests, please contact the following emails.
+    </p>
+  </section>
+
+        <section>
+            <h2>8. Contact</h2>
+            <p>
+                If you have any questions or feedback regarding the ReMiCo dataset, please contact us at:  
+                <br>
+                <a href="mailto:yunhengwu@mori.m.is.nagoya-u.ac.jp">yunhengwu@mori.m.is.nagoya-u.ac.jp</a>  
+                <br>
+                <a href="mailto:kensaku@is.nagoya-u.ac.jp">kensaku@is.nagoya-u.ac.jp</a>
+            </p>
+        </section>
+
+<!-- Distribution -->
+<section>
+    <h2>9. Distribution</h2>
+    <p>
+      It is prohibited to sell, transfer, lend, lease, resell, or distribute this database in any form.  
+      Copying, editing, or processing this database, in whole or in part, for redistribution is also prohibited.
+    </p>
+  </section>
+  
+  <!-- Personal Information -->
+  <section>
+    <h2>10. Personal Information</h2>
+    <p>
+      The use of personal information submitted for issuing the download link of this database is limited 
+      to notifications about this database and statistical analysis of its usage.  
+      Management of information follows the <b>Nagoya University Privacy Policy</b>.  
+      This website also uses Google Analytics with cookies to analyze access statistics.  
+      <b>If you wish to disable this analysis, please turn off cookies in your web browser</b>.
+    </p>
+  </section>
+  
+  <!-- Immunity -->
+  <section>
+    <h2>11. Immunity</h2>
+    <p>
+      Takebe Laboratory, Mori Laboratory, Institute of Science Tokyo and Nagoya University are not responsible 
+      for any damages arising from the use or download of this database.  
+      The accuracy, completeness, or usefulness of this database is not guaranteed.  
+      If you violate any of the above terms, or at the discretion of the laboratories or universities, 
+      your access to the database may be revoked even after downloading.  
+      The laboratories and universities reserve the right to revise this agreement 
+      without prior notice or approval from registrants or users.
+    </p>
+  </section>
+  <section>
+    <h2>12. Terms of Use</h2>
+    <p>
+      By accessing or downloading the ReMiCo dataset, you agree to comply with all applicable laws and regulations, 
+      and to use the dataset solely for lawful, academic, and non-commercial research purposes.  
+      Users must not attempt to identify individual animals, subjects, or experimental details 
+      beyond what is provided in the dataset documentation.  
+      Any use of this dataset for unethical, illegal, or harmful purposes is strictly prohibited.
+    </p>
+  </section>
+
+  <section>
+    <h2>13. Acknowledgement</h2>
+    <p>
+      The authors would like to thank the members of the 
+      Takebe Laboratory, Institute of Science Tokyo 
+      for conducting the imaging experiments, and the 
+      Mori Laboratory, Nagoya University
+      for organizing and developing the dataset.  
+      We also acknowledge the institutional support from 
+      Nagoya University and the Institute of Science Tokyo.
+      The construction of this dataset was supported by the  
+      JST Moonshot Project Goal 3: Co-evolution of Human and AI-Robots to Expand Science Frontiers.
+    </p>
+  </section>
+  
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ReMiCo Dataset. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

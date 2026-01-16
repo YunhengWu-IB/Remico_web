@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Fill in Your Information</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Please fill in the information below</h1>
+        <form method="POST">
+            <!-- Name -->
+            <label for="name">Name:</label>
+            <input id="name" type="text" name="name" autocomplete="name" required><br>
+          
+            <!-- Email -->
+            <label for="email">Email:</label>
+            <input id="email" type="email" name="email" autocomplete="email" required><br>
+          
+            <!-- Institution / Affiliation -->
+            <label for="institution">Institution / Affiliation:</label>
+            <input id="institution" type="text" name="institution" autocomplete="organization" required><br>
+          
+            <!-- Country / Region -->
+            <label for="country">Country / Region:</label>
+            <input id="country" type="text" name="country" placeholder="e.g., Japan" required><br>
+          
+            <!-- Position -->
+            <label for="position">Position:</label>
+            <select id="position" name="position" required>
+              <option value="" selected disabled>-- Select --</option>
+              <option>Undergraduate student</option>
+              <option>Master student</option>
+              <option>PhD student</option>
+              <option>Postdoc</option>
+              <option>Professor</option>
+              <option>Faculty</option>
+              <option>Researcher</option>
+              <option>Engineer</option>
+              <option>Other</option>
+            </select><br>
+          
+            <!-- Research Field of Interest -->
+            <label for="research_field">Research Field of Interest:</label>
+            <input id="research_field" type="text" name="research_field" placeholder="e.g., Biomedical Imaging, Machine Learning" size="50" required><br>
+
+
+            <!-- Agreement -->
+            <label for="agreement"
+            style="font-weight:bold; display:flex; align-items:flex-start;
+                   flex-wrap:wrap; white-space:normal;
+                   max-width:800px; width:100%; line-height:1.6;
+                   margin-top:10px;">
+       <input id="agreement" type="checkbox" name="agreement"
+              required style="margin-right:10px; margin-top:5px;">
+       I have carefully read and fully agree to all terms and conditions described in
+       <a href="/#agreement" target="_blank" style="color:#ff8800; text-decoration:underline;">
+         Sections 5–12 (the ReMiCo Dataset Usage Agreement) in main page,
+       </a>including the citation requirements, copyright
+       ownership, license restrictions, distribution prohibitions, contact information,
+       personal information handling, immunity disclaimers, and terms of use.
+     </label><br><br>
+
+
+            <button type="submit" class="button">Submit and Download</button>
+          </form>
+    </div>
+</body>
+</html>
+
