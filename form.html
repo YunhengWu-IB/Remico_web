@@ -1,69 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Fill in Your Information</title>
+    <title>Dataset Registration</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #ccc;
+            color: #666;
+            text-decoration: none;
+            border-radius: 6px;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .button.enabled {
+            background-color: #ff8800;
+            color: white;
+            pointer-events: auto;
+        }
+
+        .agreement-box {
+            margin-top: 20px;
+            max-width: 800px;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Please fill in the information below</h1>
-        <form method="POST">
-            <!-- Name -->
-            <label for="name">Name:</label>
-            <input id="name" type="text" name="name" autocomplete="name" required><br>
-          
-            <!-- Email -->
-            <label for="email">Email:</label>
-            <input id="email" type="email" name="email" autocomplete="email" required><br>
-          
-            <!-- Institution / Affiliation -->
-            <label for="institution">Institution / Affiliation:</label>
-            <input id="institution" type="text" name="institution" autocomplete="organization" required><br>
-          
-            <!-- Country / Region -->
-            <label for="country">Country / Region:</label>
-            <input id="country" type="text" name="country" placeholder="e.g., Japan" required><br>
-          
-            <!-- Position -->
-            <label for="position">Position:</label>
-            <select id="position" name="position" required>
-              <option value="" selected disabled>-- Select --</option>
-              <option>Undergraduate student</option>
-              <option>Master student</option>
-              <option>PhD student</option>
-              <option>Postdoc</option>
-              <option>Professor</option>
-              <option>Faculty</option>
-              <option>Researcher</option>
-              <option>Engineer</option>
-              <option>Other</option>
-            </select><br>
-          
-            <!-- Research Field of Interest -->
-            <label for="research_field">Research Field of Interest:</label>
-            <input id="research_field" type="text" name="research_field" placeholder="e.g., Biomedical Imaging, Machine Learning" size="50" required><br>
 
+<div class="container">
+    <h1>Dataset Registration</h1>
 
-            <!-- Agreement -->
-            <label for="agreement"
-            style="font-weight:bold; display:flex; align-items:flex-start;
-                   flex-wrap:wrap; white-space:normal;
-                   max-width:800px; width:100%; line-height:1.6;
-                   margin-top:10px;">
-       <input id="agreement" type="checkbox" name="agreement"
-              required style="margin-right:10px; margin-top:5px;">
-       I have carefully read and fully agree to all terms and conditions described in
-       <a href="index.html#agreement" target="_blank" style="color:#ff8800; text-decoration:underline;">
-         Sections 5–12 (the ReMiCo Dataset Usage Agreement) in main page,
-       </a>including the citation requirements, copyright
-       ownership, license restrictions, distribution prohibitions, contact information,
-       personal information handling, immunity disclaimers, and terms of use.
-     </label><br><br>
+    <p>
+        To access the ReMiCo dataset, you must read and agree to the dataset usage agreement before proceeding to the registration form.
+    </p>
 
-
-            <button type="submit" class="button">Submit and Download</button>
-          </form>
+    <!-- Agreement -->
+    <div class="agreement-box">
+        <label style="display:flex; align-items:flex-start;">
+            <input type="checkbox" id="agreeCheckbox" style="margin-right:10px; margin-top:5px;">
+            <span>
+                I have carefully read and fully agree to all terms and conditions described in
+                <a href="index.html#agreement" target="_blank">
+                    Sections 5–12 (ReMiCo Dataset Usage Agreement)
+                </a>,
+                including citation requirements, copyright ownership,
+                license restrictions, distribution prohibitions, personal information handling,
+                immunity disclaimers, and terms of use.
+            </span>
+        </label>
     </div>
+
+    <!-- Button -->
+    <p style="margin-top:30px;">
+        <a id="registerBtn"
+           class="button"
+           href="hhttps://docs.google.com/forms/d/1XHi4w83AeraHLe_hqpheLSK92btB3C93tVHNB9n7-qo/edit?hl=ja"
+           target="_blank">
+            Proceed to Registration Form
+        </a>
+    </p>
+
+    <p style="margin-top:15px; font-size:13px; color:#666;">
+        The registration form will open in a new tab. After submission, our team will review your request and contact you with the download information.
+    </p>
+</div>
+
+<script>
+    const checkbox = document.getElementById("agreeCheckbox");
+    const button = document.getElementById("registerBtn");
+
+    checkbox.addEventListener("change", function () {
+        if (this.checked) {
+            button.classList.add("enabled");
+        } else {
+            button.classList.remove("enabled");
+        }
+    });
+</script>
+
 </body>
 </html>
-
