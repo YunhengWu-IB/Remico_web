@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>ReMiCo Dataset Download</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <h1>Welcome to the ReMiCo Dataset Download Website</h1>
         <div class="logo-group">
-            <img src="{{ url_for('static', filename='NU.svg') }}" alt="Nagoya Logo">
-            <img src="{{ url_for('static', filename='IST.png') }}" alt="Tokyo Logo">
+                <img src="NU.svg" alt="Nagoya Logo">
+                <img src="IST.png" alt="Tokyo Logo">
         </div>
     </header>
 </body>
@@ -39,7 +39,7 @@
             <p>
                 To avoid data leakage, training and testing sets must be split by mouse case (since multiple images may come from different brain regions of the same mouse). If you would like to re-split the training and testing sets, 
                 please refer to the detailed mouse case and image correspondence table:  
-                <a class="link-btn" href="{{ url_for('mouse_table') }}">View Table</a>
+                <a class="link-btn" href="case_table.html">View Table</a>
                 
             </p>
             <p>
@@ -61,21 +61,21 @@
 <figure class="image-grid">
     <div class="row">
       <div class="col">
-        <img src="{{ url_for('static', filename='060_LM_image.png') }}" alt="LM image example">
+        <img src="060_LM_image.png" alt="LM image example">
         <figcaption>(a) Low-magnification (LM) image</figcaption>
       </div>
       <div class="col">
-        <img src="{{ url_for('static', filename='060_HM_image.png') }}" alt="HM image example">
+        <img src="060_HM_image.png" alt="HM image example">
         <figcaption>(b) High-magnification (HM) image</figcaption>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <img src="{{ url_for('static', filename='060_LM_label.png') }}" alt="Ground Truth of LM image">
+        <img src="060_LM_label.png" alt="LM label example">
         <figcaption>(c) Ground Truth of LM image</figcaption>
       </div>
       <div class="col">
-        <img src="{{ url_for('static', filename='060_HM_label.png') }}" alt="Ground Truth of HM image">
+        <img src="060_HM_ilabel.png" alt="HM label example">
         <figcaption>(d) Ground Truth of HM image</figcaption>
       </div>
     </div>
@@ -153,7 +153,7 @@
                 <li>Fill in the registration form with your information</li>
                 <li>Confirm and access the download link</li>
             </ol>
-            <a class="button" href="{{ url_for('form') }}">Dataset Download</a>
+            <a class="button" href="form.html">Dataset Download</a>
         </section>
 
         <!-- News & Updates -->
