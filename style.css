@@ -272,16 +272,16 @@ form select {
 }
 
 .footer-logo-item {
-    width: 240px;
-    height: 90px;
+    width: 340px;
+    height: 130px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .footer-logo-item img {
-    max-height: 65px;
-    max-width: 230px;
+    max-height: 100px;
+    max-width: 330px;
     width: auto;
     height: auto;
     object-fit: contain;
