@@ -265,7 +265,7 @@ form select {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 25px;
+    gap: 1px;
     flex-wrap: wrap;
     margin-top: 25px;
     margin-bottom: 20px;
