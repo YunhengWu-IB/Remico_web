@@ -265,15 +265,23 @@ form select {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 25px;
+    gap: 30px;
     flex-wrap: wrap;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 25px;
+    margin-bottom: 20px;
 }
 
-.footer-logo-group img {
-    height: 45px;
+.footer-logo-item {
+    width: 220px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-logo-item img {
+    max-height: 45px;
+    max-width: 200px;
     width: auto;
     object-fit: contain;
 }
-  
