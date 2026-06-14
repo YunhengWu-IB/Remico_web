@@ -286,3 +286,7 @@ form select {
     height: auto;
     object-fit: contain;
 }
+
+.footer-logo-item:first-child {
+    margin-right: 35px;
+}
