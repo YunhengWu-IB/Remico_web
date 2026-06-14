@@ -176,7 +176,7 @@ caption {
 body footer {
     background-color: #8aaac4;
     text-align: center;
-    padding: 5px;
+    padding: 25px 10px;
     font-size: 14px;
     color: black;
 }
@@ -254,4 +254,27 @@ form select {
     margin-top: 12px;
     font-size: 1em;
   }
+
+.support-section {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.footer-logo-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.footer-logo-group img {
+    width: 150px;
+    height: 60px;
+    object-fit: contain;
+    object-position: center;
+}
   
